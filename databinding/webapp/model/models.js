@@ -12,7 +12,16 @@ function (JSONModel, Device) {
             return oModel;
         },
         createUserModel: function() {
-            const model = new JSONModel({ firstName: "Harry", lastName: "Potter", enabled: true });
+            const model = new JSONModel({ 
+                firstName: "Harry", 
+                lastName: "Potter", 
+                enabled: true,
+                address: {
+                    street: "4 Privet Drive",
+                    city: "Surrey",
+                    country: "England"
+                }
+            });
             return model;
         }
     };

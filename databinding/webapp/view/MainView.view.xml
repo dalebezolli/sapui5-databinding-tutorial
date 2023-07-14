@@ -1,22 +1,36 @@
 <mvc:View controllerName="sap.btp.databinding.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
     xmlns="sap.m">
     <Page id="page" showHeader="false">
         <content>
-            <Panel id="panel" headerText="{i18n>panelHeaderText}" class="sapUiResponsiveMargin" width="auto">
-                <form:SimpleForm id="form" editable="true">
-                    <Label id="labelFirstName" text="First Name" />
-                    <Input id="inputFirstName" value="{user>/firstName}" valueLiveUpdate="true" width="200px" enabled="{user>/enabled}" />
+            <Panel headerText="{i18n>panelHeaderText}" class="sapUiResponsiveMargin" width="auto">
+                <form:SimpleForm editable="true">
+                    <Label text="First Name" />
+                    <Input value="{user>/firstName}" valueLiveUpdate="true" width="200px" enabled="{user>/enabled}" />
 
-                    <Label id="labelLastName" text="Last Name" />
-                    <Input id="inputLastName" value="{user>/lastName}" valueLiveUpdate="true" width="200px" enabled="{user>/enabled}" />
+                    <Label text="Last Name" />
+                    <Input value="{user>/lastName}" valueLiveUpdate="true" width="200px" enabled="{user>/enabled}" />
 
-                    <Label id="labelEnabled" text="Enabled" />
-                    <CheckBox id="checkboxEnabled" selected="{user>/enabled}" />
+                    <Label text="Enabled" />
+                    <CheckBox selected="{user>/enabled}" />
                 </form:SimpleForm>
 
-                <Button id="buttonDisplay" text="{i18n>buttonDisplay}" press=".onDisplayUserDetails" />
+                <Button text="{i18n>buttonDisplay}" press=".onDisplayUserDetails" />
+            </Panel>
+
+            <Panel headerText="{i18n>panelAddressHeaderText}" class="sapUiResponsiveMargin" width="auto">
+                <content>
+                    <l:VerticalLayout>
+                        <Label labelFor="address" text="{i18n>address}:" />
+                        <FormattedText 
+                            class="sapUiSmallMarginBottom" 
+                            htmlText="{user>/address/street}&lt;br>{user>/address/city}&lt;br>{user>/address/country}"
+                            width="200px"
+                        />
+                    </l:VerticalLayout>
+                </content>
             </Panel>
         </content>
     </Page>
