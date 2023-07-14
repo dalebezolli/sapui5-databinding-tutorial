@@ -5,7 +5,7 @@
     <Page id="page" showHeader="false">
         <content>
             <Panel id="panel" headerText="{i18n>panelHeaderText}" class="sapUiResponsiveMargin" width="auto">
-                <form:SimpleForm id="form" editable="true" layout="ColumnLayout">
+                <form:SimpleForm id="form" editable="true">
                     <Label id="labelFirstName" text="First Name" />
                     <Input id="inputFirstName" value="{user>/firstName}" valueLiveUpdate="true" width="200px" enabled="{user>/enabled}" />
 
@@ -15,6 +15,8 @@
                     <Label id="labelEnabled" text="Enabled" />
                     <CheckBox id="checkboxEnabled" selected="{user>/enabled}" />
                 </form:SimpleForm>
+
+                <Button id="buttonDisplay" text="{i18n>buttonDisplay}" press=".onDisplayUserDetails" />
             </Panel>
         </content>
     </Page>
