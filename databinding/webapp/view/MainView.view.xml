@@ -29,6 +29,11 @@
                             htmlText="{user>/address/street}&lt;br>{user>/address/city}&lt;br>{user>/address/country}"
                             width="200px"
                         />
+
+                        <Link 
+                            href="mailto:{user>/firstName}.{user>/lastName}@example.com"
+                            text="{i18n>sendEmail}"
+                        />
                     </l:VerticalLayout>
                 </content>
             </Panel>

@@ -4,10 +4,9 @@
 
 sap.ui.define([
         "sap/ui/core/UIComponent",
-        "sap/ui/Device",
         "sap/btp/databinding/model/models"
     ],
-    function (UIComponent, Device, models) {
+    function (UIComponent, models) {
         "use strict";
 
         return UIComponent.extend("sap.btp.databinding.Component", {
