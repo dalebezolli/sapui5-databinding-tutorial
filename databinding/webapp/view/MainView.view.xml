@@ -1,0 +1,7 @@
+<mvc:View controllerName="sap.btp.databinding.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" showHeader="false">
+        <content />
+    </Page>
+</mvc:View>
