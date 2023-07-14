@@ -20,7 +20,9 @@ function (JSONModel, Device) {
                     street: "4 Privet Drive",
                     city: "Surrey",
                     country: "England"
-                }
+                },
+                salesAmount: 12345.6789,
+                currencyCode: "EUR"
             });
             return model;
         }
