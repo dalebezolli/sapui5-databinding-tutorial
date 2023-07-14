@@ -11,8 +11,8 @@ function (JSONModel, Device) {
             oModel.setDefaultBindingMode("OneWay");
             return oModel;
         },
-        createGreeterModel: function() {
-            const model = new JSONModel({ greeter: "Dale" });
+        createUserModel: function() {
+            const model = new JSONModel({ firstName: "Harry", lastName: "Potter", enabled: true });
             return model;
         }
     };

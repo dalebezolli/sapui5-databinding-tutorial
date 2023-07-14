@@ -1,7 +1,21 @@
 <mvc:View controllerName="sap.btp.databinding.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:form="sap.ui.layout.form"
     xmlns="sap.m">
     <Page id="page" showHeader="false">
-        <content />
+        <content>
+            <Panel id="panel" headerText="{i18n>panelHeaderText}" class="sapUiResponsiveMargin" width="auto">
+                <form:SimpleForm id="form" editable="true" layout="ColumnLayout">
+                    <Label id="labelFirstName" text="First Name" />
+                    <Input id="inputFirstName" value="{user>/firstName}" valueLiveUpdate="true" width="200px" enabled="{user>/enabled}" />
+
+                    <Label id="labelLastName" text="Last Name" />
+                    <Input id="inputLastName" value="{user>/lastName}" valueLiveUpdate="true" width="200px" enabled="{user>/enabled}" />
+
+                    <Label id="labelEnabled" text="Enabled" />
+                    <CheckBox id="checkboxEnabled" selected="{user>/enabled}" />
+                </form:SimpleForm>
+            </Panel>
+        </content>
     </Page>
 </mvc:View>
