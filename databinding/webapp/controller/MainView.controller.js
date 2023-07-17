@@ -7,6 +7,11 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("sap.btp.databinding.controller.MainView", {
+            onInit: function() {
+                const view = this.getView();
+                const messageManager = sap.ui.getCore().getMessageManager();
+                messageManager.registerObject(view, true);
+            },
             onDisplayUserDetails: function() {
                 const model = this.getOwnerComponent().getModel("user");
                 MessageToast.show(`Registering user with details\nfirstName=${model.getProperty("/firstName")}\nlastName=${model.getProperty("/lastName")}`);               
