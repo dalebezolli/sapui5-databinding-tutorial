@@ -31,8 +31,11 @@
                         />
 
                         <Link 
-                            href="mailto:{user>/firstName}.{user>/lastName}@example.com"
                             text="{i18n>sendEmail}"
+                            href="{
+                                parts: [ 'user>/firstName', 'user>/lastName' ],
+                                formatter: '.formatEmail'
+                            }"
                         />
                     </l:VerticalLayout>
 
