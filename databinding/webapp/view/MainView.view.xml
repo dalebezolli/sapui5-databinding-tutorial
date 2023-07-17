@@ -42,17 +42,14 @@
                     <l:VerticalLayout>
                         <Label labelFor="salesAmount" text="{i18n>salesAmount}:" />
                         <Input
-                            description="{user>/currencyCode}"
                             enabled="{user>/enabled}"
                             value="{
-                                parts: [
-                                    { path: 'user>/salesAmount'},
-                                    { path: 'user>/currencyCode' }
-                                ],
+                                parts: [ 'user>/salesAmount', 'user>/currencyCode' ],
                                 type: 'sap.ui.model.type.Currency',
-                                formatOptions: { showMeasure: false }
+                                formatOptions: { 
+                                    preserveDecimals: false
+                                }
                             }"
-                            width="200px"
                         />
                     </l:VerticalLayout>
                 </content>
