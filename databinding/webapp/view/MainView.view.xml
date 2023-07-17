@@ -46,9 +46,7 @@
                             value="{
                                 parts: [ 'user>/salesAmount', 'user>/currencyCode' ],
                                 type: 'sap.ui.model.type.Currency',
-                                formatOptions: { 
-                                    preserveDecimals: false
-                                }
+                                formatOptions: { preserveDecimals: false, currencyCode: false }
                             }"
                         />
                     </l:VerticalLayout>
