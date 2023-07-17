@@ -5,8 +5,17 @@ sap.ui.define([
     "sap/ui/core/Locale",
     "sap/ui/core/LocaleData",
     "sap/ui/model/type/Currency",
+    "sap/m/ObjectAttribute",
 ],
-    function (Controller, MessageToast, mobileLibrary, Locale, LocaleData, Currency) {
+    function (
+        Controller, 
+        MessageToast, 
+        mobileLibrary, 
+        Locale, 
+        LocaleData, 
+        Currency, 
+        ObjectAttribute
+    ) {
         "use strict";
 
         return Controller.extend("sap.btp.databinding.controller.MainView", {
@@ -42,6 +51,21 @@ sap.ui.define([
                 console.log(path);
                 const productDetailsPanel = this.byId("productDetailsPanel");
                 productDetailsPanel.bindElement({ path, model: 'products' });
+            },
+            productListFactory: function(id, context) {
+                let displayControl;
+
+                if(context.getProperty("UnitsInStock") === 0 && context.getProperty("Discontinued")) {
+                    displayControl = this.byId("productSimple").clone(id);
+                } else {
+                    displayControl = this.byId("productExtended").clone(id);
+
+                    if(context.getProperty("UnitsInStock") < 1) {
+                        displayControl.addAttribute(new ObjectAttribute({ text: { path: "i18n>outOfStock" } }));
+                    }
+                }
+
+                return displayControl;
             }
         });
     });

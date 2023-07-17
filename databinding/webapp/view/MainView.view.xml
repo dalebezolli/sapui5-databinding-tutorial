@@ -1,4 +1,5 @@
 <mvc:View controllerName="sap.btp.databinding.controller.MainView"
+    xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:form="sap.ui.layout.form"
     xmlns:l="sap.ui.layout"
@@ -54,32 +55,17 @@
             </Panel>
 
             <Panel headerText="{i18n>panelProductListHeaderText}" class="sapUiResponsiveMargin" width="auto">
-                <List items="{products>/Products}">
-                    <items>
-                        <ObjectListItem 
-                            type="Active"
-                            press=".onItemSelected"
-                            title="{products>ProductName}"
-                            number="{
-                                parts: [ 'products>UnitPrice', 'user>/currencyCode' ],
-                                type: 'sap.ui.model.type.Currency',
-                                formatOptions: { preserveDecimals: false, currencyCode: false }
-                            }"
-                            numberUnit="{user>/currencyCode}"
-                            numberState="{= ${products>UnitPrice} > ${user>/unitThreshold} ? 'Error' : 'Success' }"
-                        >
-                            <attributes>
-                                <ObjectAttribute text="{products>QuantityPerUnit}" />
-                                <ObjectAttribute
-                                    title="{i18n>stockValue}"
-                                    text="{
-                                        parts: [ 'products>UnitPrice', 'products>UnitsInStock', 'user>/currencyCode' ],
-                                        formatter: '.formatStockValue'
-                                    }"
-                                />
-                            </attributes>
-                        </ObjectListItem>
-                    </items>
+                <List 
+                    id="productList"
+                    items="{
+                        path: 'products>/Products',
+                        factory: '.productListFactory'
+                    }"
+                >
+                    <dependents>
+                        <core:Fragment fragmentName="sap.btp.databinding.view.ProductSimple" type="XML" />
+                        <core:Fragment fragmentName="sap.btp.databinding.view.ProductExtended" type="XML" />
+                    </dependents>
                 </List>
             </Panel>
 
