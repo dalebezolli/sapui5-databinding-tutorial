@@ -35,6 +35,13 @@ sap.ui.define([
                 const currency = new Currency(localeData.mData.currencyFormat);
 
                 return currency.formatValue([price * units, currencyCode], "string");
+            },
+            onItemSelected: function(event) {
+                const context = event.getSource().getBindingContext("products");
+                const path = context.getPath();
+                console.log(path);
+                const productDetailsPanel = this.byId("productDetailsPanel");
+                productDetailsPanel.bindElement({ path, model: 'products' });
             }
         });
     });
