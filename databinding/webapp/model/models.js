@@ -22,7 +22,8 @@ function (JSONModel, Device) {
                     country: "England"
                 },
                 salesAmount: 12345.6789,
-                currencyCode: "EUR"
+                currencyCode: "EUR",
+                unitThreshold: 20
             });
             return model;
         },

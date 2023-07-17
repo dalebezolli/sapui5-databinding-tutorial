@@ -66,6 +66,7 @@
                                 formatOptions: { preserveDecimals: false, currencyCode: false }
                             }"
                             numberUnit="{user>/currencyCode}"
+                            numberState="{= ${products>UnitPrice} > ${user>/unitThreshold} ? 'Error' : 'Success' }"
                         >
                             <attributes>
                                 <ObjectAttribute text="{products>QuantityPerUnit}" />
