@@ -25,6 +25,12 @@ function (JSONModel, Device) {
                 currencyCode: "EUR"
             });
             return model;
+        },
+        createProductsModel: function() {
+            const model = new JSONModel();
+            const path = jQuery.sap.getModulePath("sap.btp.databinding.model") + "/Products.json";
+            model.loadData(path);
+            return model;
         }
     };
 });

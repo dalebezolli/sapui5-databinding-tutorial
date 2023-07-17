@@ -2,8 +2,11 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
     "sap/m/library",
+    "sap/ui/core/Locale",
+    "sap/ui/core/LocaleData",
+    "sap/ui/model/type/Currency",
 ],
-    function (Controller, MessageToast, mobileLibrary) {
+    function (Controller, MessageToast, mobileLibrary, Locale, LocaleData, Currency) {
         "use strict";
 
         return Controller.extend("sap.btp.databinding.controller.MainView", {
@@ -24,6 +27,14 @@ sap.ui.define([
                         resourceBundle.getText('mailSubject', [firstName]),
                         resourceBundle.getText('mailBody')
                         );
+            },
+            formatStockValue: function(price, units, currencyCode) {
+                const browserLocale = sap.ui.getCore().getConfiguration().getLanguage();
+                const locale = new Locale(browserLocale);
+                const localeData = new LocaleData(locale);
+                const currency = new Currency(localeData.mData.currencyFormat);
+
+                return currency.formatValue([price * units, currencyCode], "string");
             }
         });
     });
